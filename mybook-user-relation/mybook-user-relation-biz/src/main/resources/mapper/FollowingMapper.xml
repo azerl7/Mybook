@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geo.mybook.relation.biz.mapper.FollowingMapper">
+    <select id="selectByUserId" resultType="com.geo.mybook.relation.biz.domain.po.Following">
+        select user_id,following_user_id,create_time
+        from following
+        where user_id=#{userId,jdbcType=BIGINT}
+    </select>
+    <select id="selectCountByUserId" resultType="java.lang.Long">
+        select count(1)
+        from following
+        where user_id=#{userId}
+    </select>
+    <select id="selectPageListByUserId" resultType="com.geo.mybook.relation.biz.domain.po.Following">
+        select following_user_id
+        from following
+        where user_id=#{userId} order by create_time desc limit #{offset},#{limit}
+    </select>
+    <select id="selectLimitByUserId" resultType="com.geo.mybook.relation.biz.domain.po.Following">
+        select following_user_id ,create_time
+        from following
+        where user_id=#{userId} limit 1000
+    </select>
+</mapper>

@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: mybook-user-relation # 应用名称
+  profiles:
+    active: dev # 默认激活 dev 本地开发环境
+  cloud:
+    nacos:
+      discovery:
+        enabled: true # 启用服务发现
+        group: DEFAULT_GROUP # 所属组
+        namespace: mybook # 命名空间
+        server-addr: 192.168.170.142:8848 # 指定 Nacos 配置中心的服务器地址
+      config:
+        server-addr: 192.168.170.142:8848
+        namespace: mybook
+        group: DEFAULT_GROUP
+        prefix: ${spring.application.name} #应用前缀
+        file-extension: yaml #配置文件后缀
+        refresh-enabled: true #是否开启刷新状态
+
+rocketmq:
+  name-server: 192.168.170.142:9876 # name server 地址
+  producer:
+    group: mybook_group
+    send-message-timeout: 3000 # 消息发送超时时间，默认 3s
+    retry-times-when-send-failed: 3 # 同步发送消息失败后，重试的次数
+    retry-times-when-send-async-failed: 3 # 异步发送消息失败后，重试的次数
+    max-message-size: 4096 # 消息最大大小
+  consumer:
+    group: mybook_group
+    pull-batch-size: 5 # 每次拉取的最大消息数

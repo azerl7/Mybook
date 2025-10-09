@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geo.mybook.user.biz.mapper.PermissionMapper">
+    <select id="selectAppEnableList" resultType="com.geo.mybook.user.biz.domain.po.Permission">
+        select id,name ,permission_key
+        from permission
+        where status=0 and type=3 and is_deleted=0
+    </select>
+</mapper>

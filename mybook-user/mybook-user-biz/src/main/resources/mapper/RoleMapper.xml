@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geo.mybook.user.biz.mapper.RoleMapper">
+    <select id="selectEnabledList" resultType="com.geo.mybook.user.biz.domain.po.Role">
+        select `id`,`role_key`,`role_name`
+        from role
+        where status=0 and is_deleted=0
+    </select>
+    <select id="selectByPrimaryKey" resultType="com.geo.mybook.user.biz.domain.po.Role">
+        select `role_name`,`role_key`,`sort`
+        from role
+        where id=#{roleId}
+    </select>
+</mapper>

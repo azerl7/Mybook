@@ -1,0 +1,2 @@
+com.geo.framewrok.biz.context.config.ContextAutoConfiguration
+com.geo.framewrok.biz.context.config.FeignContextAutoConfiguration

@@ -1,0 +1,43 @@
+package com.geo.mybook.search.enums;
+
+
+/*
+creator：AZERL7
+createTime：17:27
+*/
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+import java.util.Objects;
+
+@Getter
+@AllArgsConstructor
+public enum NotePublishTimeRangeEnum {
+
+    // 一天内
+    DAY(0),
+    // 一周内
+    WEEK(1),
+    // 半年内
+    HALF_YEAR(2),
+    ;
+
+    private final Integer code;
+
+    /**
+     * 根据类型 code 获取对应的枚举
+     *
+     * @param code 数值
+     * @return type
+     */
+    public static NotePublishTimeRangeEnum valueOf(Integer code) {
+        for (NotePublishTimeRangeEnum notePublishTimeRangeEnum : NotePublishTimeRangeEnum.values()) {
+            if (Objects.equals(code, notePublishTimeRangeEnum.getCode())) {
+                return notePublishTimeRangeEnum;
+            }
+        }
+        return null;
+    }
+
+}

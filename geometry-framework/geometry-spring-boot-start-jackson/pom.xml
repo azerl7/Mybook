@@ -1,0 +1,35 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <!-- 指定父项目 -->
+    <parent>
+        <groupId>com.geo</groupId>
+        <artifactId>geometry-framework</artifactId>
+        <version>${revision}</version>
+
+    </parent>
+
+    <!-- 指定打包方式 -->
+    <packaging>jar</packaging>
+
+    <artifactId>geometry-spring-boot-starter-jackson</artifactId>
+    <name>${project.artifactId}</name>
+    <description>LocalDateTime组件</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.geo</groupId>
+            <artifactId>geometry-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+
+    </dependencies>
+</project>
+

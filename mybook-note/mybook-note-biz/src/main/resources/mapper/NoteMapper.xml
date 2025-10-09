@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geo.mybook.note.biz.mapper.NoteMapper">
+    <select id="selectByPrimaryKey" resultType="com.geo.mybook.note.biz.domain.po.Note">
+        select type,title,content_uuid,img_urls,topic_id,is_content_empty,
+        topic_name,creator_id,video_url,update_time,visible
+        from note
+        where id=#{id,jdbcType=BIGINT} and status=1;
+    </select>
+    <select id="existsById" resultType="com.geo.mybook.note.biz.domain.po.Note">
+        select id,creator_id
+        from note
+        where id=#{id};
+    </select>
+    <select id="selectCountByNoteId" resultType="java.lang.Integer">
+    select count(1)
+    from note
+    where id=#{noteId} and status=1
+    </select>
+    <select id="selectCreatorIdByNoteId" resultType="java.lang.Long">
+        select creator_id
+        from note
+        where id=#{noteId} and status=1
+    </select>
+    <select id="selectByTopicIdsLimit" resultType="com.geo.mybook.note.biz.domain.po.Note">
+<!--        select *-->
+<!--        from note-->
+<!--        where topic_id in-->
+<!--        <foreach collection="topicIds" open="(" close=")" separator=",">-->
+<!--            #{topicId}-->
+<!--        </foreach>-->
+<!--        limit #{limit}-->
+        SELECT * FROM note
+        WHERE topic_id IN
+        <foreach collection="topicIds" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+        <if test="limit != null and limit > 0">
+            LIMIT #{limit}
+        </if>
+    </select>
+</mapper>

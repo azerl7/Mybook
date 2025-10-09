@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geo.mybook.relation.biz.mapper.FansMapper">
+    <select id="selectCountByUserId" resultType="java.lang.Long">
+        select count(1)
+        from fans
+        where user_id = #{userId}
+    </select>
+    <select id="selectPageListByUserId" resultType="com.geo.mybook.relation.biz.domain.po.Fans">
+        select fans.fans_user_id
+        from fans
+        where user_id=#{userId}
+        order by  create_time limit #{offset},#{limit}
+    </select>
+    <select id="select5000FansByUserId" resultType="com.geo.mybook.relation.biz.domain.po.Fans">
+        select fans_user_id,create_time
+        from fans
+        where user_id=#{userId} order by create_time desc limit 5000
+    </select>
+
+</mapper>

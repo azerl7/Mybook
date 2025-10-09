@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geo.mybook.note.biz.mapper.ChannelMapper">
+    <select id="selectAllChannelLimit" resultType="com.geo.mybook.note.biz.domain.po.Channel">
+        select id,name
+        from channel
+        where is_deleted = 0
+        limit #{limit}
+    </select>
+    <select id="selectAllChannel" resultType="com.geo.mybook.note.biz.domain.po.Channel">
+        select id,name
+        from channel
+        where is_deleted =0
+    </select>
+</mapper>

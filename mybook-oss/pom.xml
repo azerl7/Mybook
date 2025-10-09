@@ -1,0 +1,21 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.geo</groupId>
+        <artifactId>Mybook</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <packaging>pom</packaging>
+
+    <artifactId>mybook-oss</artifactId>
+    <name>${project.artifactId}</name>
+    <description>对象存储服务（负责存储数据，向其他服务提供数据访问，数据存储api）</description>
+
+    <modules>
+        <module>mybook-oss-api</module>
+        <module>mybook-oss-biz</module>
+    </modules>
+
+</project>

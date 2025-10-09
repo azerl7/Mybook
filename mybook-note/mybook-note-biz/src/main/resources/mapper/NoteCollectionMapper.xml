@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geo.mybook.note.biz.mapper.NoteCollectionMapper">
+    <insert id="insertOrUpdateMybatis">
+        insert into note_collection
+        (user_id,note_id,create_time,status)
+        values(#{userId},#{noteId},#{createTime},#{status})
+        on duplicate key update create_time =#{createTime} ,status=#{status}
+    </insert>
+    <update id="update2UnCollectByUserIdAndNoteId">
+        update note_collection
+        set status=#{status},create_time=#{createTime}
+        where user_id=#{userId} and note_id=#{noteId} and status=1
+    </update>
+    <select id="selectCountByUserIdAndNoteId" resultType="java.lang.Integer">
+        select count(1)
+        from note_collection
+        where user_id=#{userId} and note_id=#{noteId} and status=1 limit 1
+    </select>
+    <select id="selectByUserId" resultType="com.geo.mybook.note.biz.domain.po.NoteCollection">
+        select note_id
+        from note_collection
+        where user_id=#{userId} and status=1
+    </select>
+    <select id="selectNoteIsCollected" resultType="java.lang.Integer">
+        select count(1)
+        from note_collection
+        where user_id =#{userId} and note_id=#{noteId} and status=1 limit 1
+    </select>
+    <select id="selectCollectedByUserIdAndLimit" resultType="com.geo.mybook.note.biz.domain.po.NoteCollection">
+        select note_id,create_time
+        from note_collection
+        where user_id=#{userId} and status=1 order by create_time desc limit #{limit}
+    </select>
+</mapper>

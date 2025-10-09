@@ -1,0 +1,11 @@
+server:
+  port: 8085
+
+spring:
+  profiles:
+    active: dev
+
+  cassandra:
+    keyspace-name: mybook
+    contact-points: 192.168.170.142
+    port: 9042

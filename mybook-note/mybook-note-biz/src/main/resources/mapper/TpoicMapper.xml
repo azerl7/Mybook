@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geo.mybook.note.biz.mapper.TopicMapper">
+    <select id="selectNameByPrimaryKey" resultType="java.lang.String">
+        select `name`
+        from topic
+        where `id`=#{id,jdbcType=BIGINT};
+    </select>
+    <select id="selectByChannelId" resultType="java.lang.Long">
+        select topic_id
+        from channel_topic_rel
+        <where>
+            <if test="channelId!=0">
+                channel_id=#{channelId}
+            </if>
+        </where>
+    </select>
+</mapper>
