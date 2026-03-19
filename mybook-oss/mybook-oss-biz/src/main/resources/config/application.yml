@@ -11,7 +11,3 @@ storage:
     endpoint: http://192.168.170.142:9000
     accessKey: minioadmin
     secretKey: minioadmin
-  aliyun-oss:
-    endpoint: oss-cn-hangzhou.aliyuncs.com
-    accessKey: LTAI5t9XQJBaznW4ypWGV6fe
-    secretKey: V5yBBqysOqBKJUfAfp2NdUwrHIZch1
